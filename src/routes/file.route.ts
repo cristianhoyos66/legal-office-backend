@@ -10,6 +10,12 @@ async function saveFile (file: any, newpath: string, req: any): Promise<FileAttr
   let filename: string = file !== undefined ? file.name : ''
   filename = `${new Date().getTime()}_${Math.random()}_${filename}`
   file?.mv(`${newpath}${filename}`)
+  console.log('FILES:', {
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+    url: `${req.protocol}://${req.get('host')}/files/${filename}`,
+    caseId: req.body.caseId,
+    fileTypeId: req.body.fileTypeId
+  })
   return await fileService.createFile({
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     url: `${req.protocol}://${req.get('host')}/files/${filename}`,
