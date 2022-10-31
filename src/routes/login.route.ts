@@ -12,10 +12,11 @@ router.post('/login', asyncHandler(async (req, res, next) => {
     res.cookie('jwt', response.refreshToken, {
       httpOnly: true,
       sameSite: 'none',
+      // sameSite: 'lax', local
       maxAge: 1800000,
       path: '/api/refresh',
-      domain: 'consultorio-juridico.herokuapp.com',
-      secure: true
+      domain: 'consultorio-juridico.herokuapp.com', // no va si es local
+      secure: true // no va si es local
     })
     res.send({ accessToken: response.accessToken })
   } catch (error) {
@@ -39,7 +40,6 @@ router.post('/refresh', asyncHandler(async (req, res, next) => {
       path: '/api/refresh',
       domain: 'consultorio-juridico.herokuapp.com',
       secure: true
-
     })
     res.send({ accessToken: response.accessToken })
   } catch (error) {
