@@ -10,11 +10,11 @@ router.post('/login', asyncHandler(async (req, res, next) => {
   try {
     const response: LoginResponse = await loginService.login(req.body.username, req.body.pwd)
     res.cookie('jwt', response.refreshToken, {
-      httpOnly: true,
-      sameSite: 'lax',
-      maxAge: 1800000,
-      path: '/api/refresh',
-      domain: 'consultorio-juridico.herokuapp.com'
+      // httpOnly: true,
+      // sameSite: 'lax',
+      maxAge: 1800000
+      // path: '/api/refresh',
+      // domain: 'consultorio-juridico.herokuapp.com'
     })
     res.send({ accessToken: response.accessToken })
   } catch (error) {
@@ -32,11 +32,11 @@ router.post('/refresh', asyncHandler(async (req, res, next) => {
   try {
     const response: LoginResponse = await loginService.refresh(req.cookies.jwt)
     res.cookie('jwt', response.refreshToken, {
-      httpOnly: true,
-      sameSite: 'lax',
-      maxAge: 1800000,
-      path: '/api/refresh',
-      domain: 'consultorio-juridico.herokuapp.com'
+      // httpOnly: true,
+      // sameSite: 'lax',
+      maxAge: 1800000
+      // path: '/api/refresh',
+      // domain: 'consultorio-juridico.herokuapp.com'
     })
     res.send({ accessToken: response.accessToken })
   } catch (error) {
