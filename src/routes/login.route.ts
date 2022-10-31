@@ -14,7 +14,7 @@ router.post('/login', asyncHandler(async (req, res, next) => {
       sameSite: 'lax',
       maxAge: 1800000,
       path: '/api/refresh',
-      domain: 'seashell-app-coja7.ondigitalocean.app'
+      domain: 'consultorio-juridico.herokuapp.com'
     })
     res.send({ accessToken: response.accessToken })
   } catch (error) {
@@ -36,7 +36,7 @@ router.post('/refresh', asyncHandler(async (req, res, next) => {
       sameSite: 'lax',
       maxAge: 1800000,
       path: '/api/refresh',
-      domain: 'seashell-app-coja7.ondigitalocean.app'
+      domain: 'consultorio-juridico.herokuapp.com/'
     })
     res.send({ accessToken: response.accessToken })
   } catch (error) {
